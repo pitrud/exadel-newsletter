@@ -1,0 +1,12 @@
+<svg id="loupe" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+  <g id="Group_4" data-name="Group 4">
+    <g id="Group_3" data-name="Group 3">
+      <path id="Path_13" data-name="Path 13" d="M11.009,0A11.009,11.009,0,1,0,22.019,11.009,11.022,11.022,0,0,0,11.009,0Zm0,19.986a8.977,8.977,0,1,1,8.977-8.977A8.987,8.987,0,0,1,11.009,19.986Z" fill="#209ebc"/>
+    </g>
+  </g>
+  <g id="Group_6" data-name="Group 6" transform="translate(17.141 17.141)">
+    <g id="Group_5" data-name="Group 5">
+      <path id="Path_14" data-name="Path 14" d="M358.607,357.17l-5.827-5.827a1.016,1.016,0,0,0-1.437,1.437l5.827,5.827a1.016,1.016,0,0,0,1.437-1.437Z" transform="translate(-351.046 -351.046)" fill="#209ebc"/>
+    </g>
+  </g>
+</svg>
