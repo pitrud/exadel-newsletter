@@ -5,6 +5,7 @@ import PopularArticlesSection from "@/components/popularArticles";
 import RecommendedArticlesSection from "@/components/recommendedArticles";
 import Header from "@/components/header";
 
+
 export default function Home() {
   return (
     <>
@@ -17,3 +18,4 @@ export default function Home() {
     </>
   );
 }
+

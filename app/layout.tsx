@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { ThemeProvider } from "next-themes";
 
 const dm_sans = DM_Sans({ subsets: ["latin"] });
 
@@ -17,9 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`bg-gray-light ${dm_sans.className}`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`bg-gray-light dark:bg-gray-dark ${dm_sans.className}`}>
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
         <Footer />
       </body>
     </html>

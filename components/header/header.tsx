@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import ThemeChangeBtn from "./themeChangeBtn";
 interface IProps {
   withLogo?: boolean;
 }
@@ -18,9 +18,7 @@ export default function Header({ withLogo }: IProps) {
           <button className="relative h-3 md:h-4 w-4">
             <Image src="/icon-loupe.svg" fill alt="" />
           </button>
-          <button className="relative h-5 md:h-6 w-6 ml-2 md:ml-6">
-            <Image src="/icon-day-night.svg" alt="" fill />
-          </button>
+          <ThemeChangeBtn />
           <div className="bg-gradient-to-r from-blue-dark via-sea to-blue p-[0.05rem] ml-2 md:ml-6">
             <div className="flex h-full w-full items-center justify-center bg-gray-light back">
               <h1 className="text-blue-dark uppercase px-2 md:px-8 py-0 md:py-2 text-sm">
