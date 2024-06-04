@@ -16,7 +16,7 @@ const config: Config = {
       gray: {
         DEFAULT: "#00000029",
         light: "#F3F3F3",
-        dark: "#707070",
+        dark: "#424141",
       },
       sea: {
         DEFAULT: "#209EBC",
