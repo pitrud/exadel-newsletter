@@ -1,7 +1,7 @@
 export default function Newsletter() {
   return (
     <section id="newsletter" className="my-16 bg-blue-light py-12 relative">
-      <div className="max-w-5xl mx-auto w-4/5 lg:w-full">
+      <div className="max-w-7xl mx-auto w-4/5 lg:w-full">
         <div className="text-lg md:text-2xl lg:text-4xl text-sea font-medium">
           WANT MORE CONTENT LIKE THIS?
         </div>

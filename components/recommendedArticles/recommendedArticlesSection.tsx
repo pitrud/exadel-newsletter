@@ -1,4 +1,5 @@
 import { getPosts } from "@/actions/main";
+import ImageWithFallback from "@/helpers/imageWithFallback";
 import { notFound } from "next/navigation";
 
 interface IProps {
@@ -11,7 +12,7 @@ export default async function RecommendedArticlesSection({
   if (!posts) notFound();
 
   return (
-    <section id="recommended" className="max-w-5xl mx-4 lg:mx-auto my-16">
+    <section id="recommended" className="max-w-7xl mx-4 lg:mx-auto my-16">
       <div className="flex mb-8">
         <div className="text-3xl font-medium text-blue-dark uppercase dark:text-white">
           recommended
@@ -30,8 +31,13 @@ export default async function RecommendedArticlesSection({
           <a href={post.url} target="_blank" rel="nofollow">
             <div className="flex mb-5 mt-3">
               <div className="w-2/6">
-                <img
-                  src={post.previewImageUrl}
+                <ImageWithFallback
+                  src={
+                    post.previewImageUrl
+                      ? post.previewImageUrl
+                      : post.defaultImage
+                  }
+                  postId={post.id}
                   className="drop-shadow-xl shadow-gray pr-8"
                 />
               </div>

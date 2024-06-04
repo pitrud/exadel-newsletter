@@ -12,7 +12,7 @@ const MainCategories = async () => {
   return (
     <section
       id="categories"
-      className="flex max-w-5xl flex-wrap gap-4 justify-center mx-auto my-16"
+      className="flex max-w-7xl flex-wrap gap-4 justify-center mx-auto my-16"
     >
       {categories.map(renderCategoryItem)}
     </section>

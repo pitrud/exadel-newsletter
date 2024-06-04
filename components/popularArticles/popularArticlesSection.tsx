@@ -1,4 +1,5 @@
 import { getPosts } from "@/actions/main";
+import ImageWithFallback from "@/helpers/imageWithFallback";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,7 +12,7 @@ export default async function PopularArticlesSection({ customTags }: IProps) {
   if (!posts) notFound();
 
   return (
-    <section id="popular" className="max-w-5xl mx-4 lg:mx-auto my-16">
+    <section id="popular" className="max-w-7xl mx-4 lg:mx-auto my-16">
       <div className="flex mb-8">
         <div className="text-3xl font-medium text-blue-dark uppercase dark:text-white">
           popular
@@ -28,8 +29,13 @@ export default async function PopularArticlesSection({ customTags }: IProps) {
         {/* <!-- left: big article--> */}
         <div className="w-full md:w-1/2">
           <a href={posts.content[0].post.url} target="_blank" rel="nofollow">
-            <img
-              src={posts.content[0].post.previewImageUrl}
+            <ImageWithFallback
+              src={
+                posts.content[0].post.previewImageUrl
+                  ? posts.content[0].post.previewImageUrl
+                  : posts.content[0].post.defaultImage
+              }
+              postId={posts.content[0].post.id}
               className="w-full md:w-auto"
             />
 
@@ -66,8 +72,13 @@ export default async function PopularArticlesSection({ customTags }: IProps) {
                     </div>
                   </div>
                   <div className="w-2/5 relative drop-shadow-xl shadow-gray overflow-hidden h-28">
-                    <img
-                      src={post.previewImageUrl}
+                    <ImageWithFallback
+                      src={
+                        post.previewImageUrl
+                          ? post.previewImageUrl
+                          : post.defaultImage
+                      }
+                      postId={post.id}
                       className="absolute top-0 left-0 w-full h-auto"
                     />
                   </div>

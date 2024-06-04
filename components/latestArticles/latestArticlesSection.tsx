@@ -1,4 +1,5 @@
 import { getPosts } from "@/actions/main";
+import ImageWithFallback from "@/helpers/imageWithFallback";
 import { notFound } from "next/navigation";
 
 interface IProps {
@@ -9,7 +10,7 @@ export default async function LatestArticlesSection({ customTags }: IProps) {
   if (!posts) notFound();
 
   return (
-    <section id="latest" className="max-w-5xl mx-4 lg:mx-auto my-16">
+    <section id="latest" className="max-w-7xl mx-4 lg:mx-auto my-16">
       <div className="flex mb-8">
         <div className="text-3xl font-medium text-blue-dark uppercase dark:text-white">
           latest
@@ -26,9 +27,13 @@ export default async function LatestArticlesSection({ customTags }: IProps) {
           <div key={post.id} className="">
             <a href={post.url} target="_blank" rel="nofollow">
               <div className="w-full h-44 overflow-hidden relative">
-                <img
-                  src={post.previewImageUrl}
-                  alt=""
+                <ImageWithFallback
+                  src={
+                    post.previewImageUrl
+                      ? post.previewImageUrl
+                      : post.defaultImage
+                  }
+                  postId={post.id}
                   className="absolute w-auto min-w-full h-full top-0 left-0"
                 />
               </div>
