@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ThemeChangeBtn from "./themeChangeBtn";
+import Autocomplete from "./autocomplete";
 
 interface IProps {
   withLogo?: boolean;
@@ -16,6 +17,7 @@ export default function Header({ withLogo }: IProps) {
           dashboard
         </div>
         <div className="ml-auto flex items-center">
+          <Autocomplete />
           <button className="relative h-3 md:h-4 w-4">
             <Image src="/icon-loupe.svg" fill alt=""  />
           </button>

@@ -1,0 +1,65 @@
+"use client";
+
+import { search } from "@/actions/search";
+import { Tag } from "@/types/main";
+import { useState } from "react";
+import Autosuggest, {
+  ChangeEvent,
+  SuggestionsFetchRequestedParams,
+} from "react-autosuggest";
+
+export default function Autocomplete() {
+  const [value, setValue] = useState("");
+  const [suggestions, setSuggestions] = useState<Tag[]>([]);
+
+  const onChange = (_: React.FormEvent<HTMLElement>, params: ChangeEvent) => {
+    setValue(params.newValue);
+  };
+  const onSuggestionsFetchRequested = async ({
+    value,
+  }: SuggestionsFetchRequestedParams) => {
+    const suggestions = await getSuggestions(value);
+
+    setSuggestions(suggestions);
+  };
+
+  const onSuggestionsClearRequested = () => {
+    setSuggestions([]);
+  };
+
+  const inputProps = {
+    placeholder: "search your data",
+    value,
+    onChange: onChange,
+  };
+
+  const getSuggestions = (value: string) => {
+    const inputValue = value.trim().toLowerCase();
+    if (inputValue.length === 0) return [];
+
+    return search(value);
+  };
+
+  const getSuggestionValue = (suggestion: Tag) => suggestion.name;
+
+  const renderSuggestion = (suggestion: Tag) => (
+    <div className="px-2 py-1 hover:bg-blue-light">{suggestion.name}</div>
+  );
+
+  return (
+    <Autosuggest
+      suggestions={suggestions}
+      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+      onSuggestionsClearRequested={onSuggestionsClearRequested}
+      getSuggestionValue={getSuggestionValue}
+      renderSuggestion={renderSuggestion}
+      inputProps={inputProps}
+      theme={{
+        container: "m-2 relative",
+        input: "p-2 bg-gray-300 w-full outline-none",
+        suggestionsList: "absolute left-0 right-0 bg-white z-10",
+        suggestionHighlighted: "bg-red",
+      }}
+    />
+  );
+}
