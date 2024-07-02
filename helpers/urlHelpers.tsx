@@ -29,5 +29,5 @@ export function getSelectedTags() {
   if (!window.history.pushState) return [];
 
   let searchParams = new URLSearchParams(search);
-  return (searchParams.get("tags") || "").split(",");
+  return (searchParams.get("tags") || "").split(",").filter(tag => tag.length);
 }

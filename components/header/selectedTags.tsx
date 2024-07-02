@@ -1,23 +1,30 @@
 "use client";
 
-import { getSelectedTags } from "@/helpers/urlHelpers";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { getSelectedTags, removeUrlParam } from "@/helpers/urlHelpers";
+
+import { usePathname, useSearchParams } from "next/navigation";
 
 export function SelectedTagsInfo() {
-  const router = useRouter()
-  const { query } = router
-  console.log('rr', router, '+,', query)
-  
-  const renderTag = (tag: string) => <div className="tag">{tag}</div>;
+  const searchParams = useSearchParams();
+
+  const renderTag = (tag: string) => (
+    <button
+      onClick={() => removeUrlParam(tag)}
+      className=" bg-blue-medium text-blue-dark  text-xs font-light py-1 px-2 text-center dark:bg-gray-dark dark:border dark:text-white"
+    >
+      {tag} <span className="text-blue-dark ml-1">&#x2715;</span>
+    </button>
+  );
   const tags = getSelectedTags();
-
-
-useEffect(() => {
-  console.log('zmiaaana')
-}, [tags])
 
   if (!tags.length) return null;
 
-  return <div>{tags.map(renderTag)}</div>;
+  return (
+    <section
+      id="selected-tags"
+      className="flex max-w-7xl flex-wrap gap-4 justify-start mx-auto"
+    >
+      <div className="flex gap-2"> {tags.map(renderTag)}</div>
+    </section>
+  );
 }
