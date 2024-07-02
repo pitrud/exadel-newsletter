@@ -15,7 +15,6 @@ export default function Autocomplete() {
   const [suggestions, setSuggestions] = useState<Tag[]>([]);
 
   const onChange = (_: React.FormEvent<HTMLElement>, params: ChangeEvent) => {
-    console.log("on change!", params);
     setValue(params.newValue);
   };
   const onSuggestionsFetchRequested = async ({

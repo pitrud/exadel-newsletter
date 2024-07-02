@@ -1,22 +1,16 @@
-import { getCategories } from "@/actions/main";
-import { Category } from "@/types/main";
-import CategoryItem from "./categoryItem";
+import MainCategories from "./mainCategories";
+import { SelectedTags } from "./selectedTags";
 
-const MainCategories = async () => {
-  const categories = await getCategories();
-
-  const renderCategoryItem = (category: Category) => (
-    <CategoryItem category={category} />
-  );
-
-  return (
-    <section
-      id="categories"
-      className="flex max-w-7xl flex-wrap gap-4 justify-center mx-auto my-16"
-    >
-      {categories.map(renderCategoryItem)}
-    </section>
+interface IProps {
+  elementsToShow: "categories" | "tags";
+  initialTags?: string[];
+}
+const Categories = ({ elementsToShow, initialTags }: IProps) => {
+  return elementsToShow === "categories" ? (
+    <MainCategories />
+  ) : (
+    <SelectedTags initialTags={initialTags} />
   );
 };
 
-export default MainCategories;
+export default Categories;

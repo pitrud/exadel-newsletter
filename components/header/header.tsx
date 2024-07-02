@@ -1,7 +1,6 @@
 import Image from "next/image";
 import ThemeChangeBtn from "./themeChangeBtn";
 import HeaderSearch from "./headerSearch";
-import { SelectedTagsInfo } from "./selectedTags";
 
 interface IProps {
   withLogo?: boolean;
@@ -41,8 +40,6 @@ export default function Header({ withLogo }: IProps) {
           </div>
         </div>
       )}
-
-      <SelectedTagsInfo />
     </header>
   );
 }
