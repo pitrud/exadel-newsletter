@@ -1,4 +1,5 @@
 export function insertUrlParam(param: string) {
+  if (typeof window === "undefined") return;
   const { protocol, host, pathname, search } = window.location;
   if (window.history.pushState) {
     let searchParams = new URLSearchParams(search);
@@ -12,6 +13,7 @@ export function insertUrlParam(param: string) {
 }
 
 export function removeUrlParam(param: string) {
+  if (typeof window === "undefined") return;
   const { protocol, host, pathname, search } = window.location;
   if (window.history.pushState) {
     let searchParams = new URLSearchParams(search);
@@ -25,9 +27,12 @@ export function removeUrlParam(param: string) {
 }
 
 export function getSelectedTags() {
+  if (typeof window === "undefined") return [];
   const { search } = window.location;
   if (!window.history.pushState) return [];
 
   let searchParams = new URLSearchParams(search);
-  return (searchParams.get("tags") || "").split(",").filter(tag => tag.length);
+  return (searchParams.get("tags") || "")
+    .split(",")
+    .filter((tag) => tag.length);
 }

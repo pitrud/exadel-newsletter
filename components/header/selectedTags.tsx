@@ -2,11 +2,7 @@
 
 import { getSelectedTags, removeUrlParam } from "@/helpers/urlHelpers";
 
-import { usePathname, useSearchParams } from "next/navigation";
-
 export function SelectedTagsInfo() {
-  const searchParams = useSearchParams();
-
   const renderTag = (tag: string) => (
     <button
       onClick={() => removeUrlParam(tag)}
